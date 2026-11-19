@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancha Activa — Reserva deportiva</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">🏆 Cancha activa</div>
+    <h4 class="estado">Reserva deportiva</h4>
+  </header>
+
+  <main class="container">
+    <section>
+      <span class="etiqueta">TU DEPORTE, TU ESPACIO</span>
+      <marquee>¡Elige tu cancha y disfruta tu deporte!</marquee>
+      <p class="descripcion">
+        Reserva tu espacio deportivo de forma rápida y sencilla. Selecciona tu deporte, 
+        adecuado a tu disponibilidad de tiempo, con el costo más económico. 
+        ¿Qué esperas para confirmar tu solicitud?
+      </p>
+    </section>
+
+    <section class="panel">
+      <span class="subtitulo">CANCHA ACTIVA</span>
+      <h2>Reserva tu cancha</h2>
+      <p class="texto-secundario">Completa los datos del formulario.</p>
+
+      <form id="formulario">
+        <h3>01. Datos del cliente</h3>
+        
+        <div class="grupo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Ej. Walter Souza" minlength="3" maxlength="80" required>
+        </div>
+
+        <div class="grupo">
+          <label for="telefono">Número de contacto</label>
+          <input type="tel" id="telefono" placeholder="Ej. 70012345" pattern="[0-9 +()-]{7,20}" maxlength="20" required>
+        </div>
+
+        <h3>02. Detalles de la reserva</h3>
+        
+        <div class="grupo">
+          <label for="deporte">Tipo de cancha</label>
+          <select id="deporte" required>
+            <option value="futbol">⚽ Fútbol — Bs 120/hora</option>
+            <option value="basquetbol">🏀 Básquetbol — Bs 70/hora</option>
+            <option value="voleibol">🏐 Voleibol — Bs 60/hora</option>
+          </select>
+        </div>
+
+        <div class="fila">
+          <div class="grupo">
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" required>
+          </div>
+          <div class="grupo">
+            <label for="hora">Hora de inicio</label>
+            <input type="time" id="hora" required>
+          </div>
+        </div>
+
+        <div class="grupo">
+          <label for="duracion">
+            Duración de la reserva: <strong id="textoDuracion"> Apartir de una hora</strong>
+          </label>
+          <div class="range-contenedor">
+            <output id="burbujaDuracion" class="burbuja">Hrs.</output>
+            <input type="range" id="duracion" name="duracion" min="1" max="12" value="1" step="1">
+          </div>
+          <small class="ayuda">10 % de descuento para reservas de 3 horas o más.</small>
+        </div>
+
+        <div class="precio">
+          <div>
+            <strong style="font-size:14px">Precio estimado</strong>
+            <small id="detalle">Fútbol · 1 hora</small>
+          </div>
+          <strong id="precio">Bs 120,00</strong>
+        </div>
+
+        <button type="submit" class="principal">Confirmar reserva →</button>
+        <button type="reset" class="secundario">Limpiar formulario</button>
+        
+        <p class="nota">Simulación local. No se realiza ningún pago.</p>
+      </form>
+    </section>
+
+    <section class="panel" id="seccionResumen" hidden>
+      <span class="subtitulo">CANCHA ACTIVA</span>
+      <h2>Resumen de la reserva</h2>
+      <p class="texto-secundario">Revisa los datos de tu solicitud.</p>
+
+      <div class="confirmacion" id="confirmacion" hidden>
+        <strong>✓ ¡Reserva registrada!</strong>
+        <p>La solicitud se registró en esta página.</p>
+      </div>
+
+      <div class="resumen-deporte">
+        <span class="emoji" id="rEmoji">⚽</span>
+        <div>
+          <strong id="rDeporte">Fútbol</strong>
+          <small>Cancha deportiva</small>
+        </div>
+      </div>
+
+      <div class="datos">
+        <div class="dato">
+          <span>Cliente</span>
+          <strong id="rNombre"></strong>
+        </div>
+        <div class="dato">
+          <span>Contacto</span>
+          <strong id="rTelefono"></strong>
+        </div>
+        <div class="dato">
+          <span>Fecha</span>
+          <strong id="rFecha"></strong>
+        </div>
+        <div class="dato">
+          <span>Horario</span>
+          <strong id="rHorario"></strong>
+        </div>
+        <div class="dato">
+          <span>Duración</span>
+          <strong id="rDuracion"></strong>
+        </div>
+      </div>
+
+      <div class="desglose">
+        <div>
+          <span>Costo original</span>
+          <strong id="rOriginal"></strong>
+        </div>
+        <div>
+          <span>Descuento del 10 %</span>
+          <strong id="rDescuento"></strong>
+        </div>
+      </div>
+
+      <div class="total">
+        <span>Total a pagar</span>
+        <strong id="rTotal"></strong>
+      </div>
+
+      <button type="button" class="principal" id="nuevaReserva">+ Nueva reserva</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
